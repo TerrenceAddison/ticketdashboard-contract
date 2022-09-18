@@ -14,6 +14,8 @@ This project is using Thirdweb's track 1 and polygon.
  * thirdweb Typescript SDK for frontend(refer [here](https://github.com/TerrenceAddison/ticketdashboard-ui))
  * Polygon
  * hardhat
+ * chainlink
+ * tailwindcss
 
 
 ## Links
