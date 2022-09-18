@@ -52,7 +52,7 @@ to install all packages needed to compile the contract and make changes to the c
 
 Run:
 ```bash
-npx thirdweb release
+npx thirdweb deploy
 ```
 to deploy it via thirdweb.
 
