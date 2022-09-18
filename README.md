@@ -8,10 +8,12 @@ This project is using Thirdweb's track 1 and polygon.
 
 
 ## Technologies Used
- * thirdweb release
+ * thirdweb custom contracts
  * thirdweb's ERC721 base contract
+ * thirdweb's PermissionEnumerable contract
  * thirdweb Typescript SDK for frontend(refer [here](https://github.com/TerrenceAddison/ticketdashboard-ui))
  * Polygon
+ * hardhat
 
 
 ## Links
