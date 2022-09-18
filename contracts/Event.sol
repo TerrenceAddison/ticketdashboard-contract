@@ -108,4 +108,112 @@ contract Event is ERC721Base {
         }(""); // contract has to pay gas fees also? so we take service first then leftover is theirs
         require(callSuccess, "callfailed");
     }
+
+    // update functions
+    function updateEventDate(uint256 newDate) public eventCreatorOnly {
+        require(newDate > s_purchaseEndDate, "must be after purchaseEndDate");
+        s_eventDate = newDate;
+    }
+
+    function updatePurchaseStartDate(uint256 newStartDate)
+        public
+        eventCreatorOnly
+    {
+        require(
+            newStartDate < s_purchaseEndDate,
+            "must be before purchaseEndDate"
+        );
+        s_purchaseStartDate = newStartDate;
+    }
+
+    function updatePurchaseEndDate(uint256 newEndDate) public eventCreatorOnly {
+        require(
+            newEndDate > s_purchaseStartDate && newEndDate < s_eventDate,
+            "must be between the 2 dates"
+        );
+        s_purchaseEndDate = newEndDate;
+    }
+
+    function updateTicketPrice(uint256 newTicketPrice) public eventCreatorOnly {
+        s_ticketPrice = newTicketPrice;
+    }
+
+    function updateEventName(string memory newEventName)
+        public
+        eventCreatorOnly
+    {
+        require(bytes(newEventName).length != 0, "cannot be empty string");
+        s_eventName = newEventName;
+    }
+
+    // function updateEventDetails(string memory newEventDetails) public eventCreatorOnly{
+    //   require(bytes(newEventDetails).length != 0, "cannot be empty string");
+    //   s_eventDetails = newEventDetails;
+    // }
+
+    function _baseURI() internal view override returns (string memory) {
+        return s_baseUri;
+    }
+
+    function tokenURI(uint256 /* tokenId */)
+        public
+        view
+        virtual
+        override
+        returns (string memory)
+    {
+        string memory baseURI = _baseURI();
+        return baseURI;
+    }
+
+    function setPause(bool val) public onlyOwner {
+        s_paused = val;
+    }
+
+    // view / pure functions
+    function getEventDate() public view returns (uint256) {
+        return s_eventDate;
+    }
+
+    function getPurchaseStartDate() public view returns (uint256) {
+        return s_purchaseStartDate;
+    }
+
+    function getPurchaseEndDate() public view returns (uint256) {
+        return s_purchaseEndDate;
+    }
+
+    function getTicketPurchased() public view returns (uint256) {
+        return (nextTokenIdToMint()-1);
+    }
+
+    function getTicketPrice() public view returns (uint256) {
+        return s_ticketPrice;
+    }
+
+    // not sure if we need the view function for eventcreator and service
+    function getEventCreator() public view returns (address) {
+        return i_eventCreator;
+    }
+
+    function getService() public view returns (address) {
+        return i_service;
+    }
+
+    function getServiceCharge() public view returns (uint256) {
+        uint256 charge = address(this).balance / 100; // 1%
+        return charge;
+    }
+
+    function getEventName() public view returns (string memory) {
+        return s_eventName;
+    }
+
+    // function getEventDetails() public view returns (string memory) {
+    //   return s_eventDetails;
+    // }
+
+    function getPriceFeed() public view returns (AggregatorV3Interface) {
+        return s_priceFeed;
+    }
 }
