@@ -34,13 +34,6 @@ contract EventCreator is PermissionsEnumerable, Ownable {
         uint256 indexed eventId
     );
 
-    modifier NotCreated() {
-        if (s_events[s_eventId].eventOwner != address(0)) {
-            revert EventCreator__EventAlreadyExists();
-        }
-        _;
-    }
-
     constructor(address priceFeedAddress, address service) {
         s_priceFeedAddress = priceFeedAddress;
         s_service = service;
@@ -54,7 +47,7 @@ contract EventCreator is PermissionsEnumerable, Ownable {
         uint256 _ticketPrice,
         uint256 _purchaseEndDate,
         string memory _tokenUri
-    ) public NotCreated {
+    ) public {
         if (_eventDate < block.timestamp) {
             revert EventCreator__EventDateMustBeGreaterThanNow();
         }
