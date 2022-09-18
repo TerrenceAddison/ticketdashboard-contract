@@ -74,3 +74,10 @@ npm run dev
 to run it
 
 
+Third WEB Release
+https://thirdweb.com/0xF5b1CE392A112efB926d4926E09Ed81533bA805d/EventCreator
+
+Third web Dashboard link
+https://thirdweb.com/mumbai/0x45E11833C055AFe27830fc3F42C19100E23ad55a/
+
+
