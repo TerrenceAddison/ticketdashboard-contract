@@ -80,4 +80,6 @@ https://thirdweb.com/0xF5b1CE392A112efB926d4926E09Ed81533bA805d/EventCreator
 Third web Dashboard link
 https://thirdweb.com/mumbai/0x45E11833C055AFe27830fc3F42C19100E23ad55a/
 
-
+Contract address
+0x45E11833C055AFe27830fc3F42C19100E23ad55a
+this contract will deploy the other event contracts which has been demonstrated in the videos.
