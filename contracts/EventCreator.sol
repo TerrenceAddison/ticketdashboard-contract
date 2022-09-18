@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "@thirdweb-dev/contracts/extension/Ownable.sol";
-// import "@thirdweb-dev/contracts/extension/PermissionsEnumerable.sol"; // this contracts help us create roles
+import "@thirdweb-dev/contracts/extension/PermissionsEnumerable.sol"; // this contracts help us create roles
 import "./Event.sol";
 
 error EventCreator__EventAlreadyExists();
@@ -11,7 +11,7 @@ error EventCreator__EventDateMustBeGreaterThanNow();
 error EventCreator__EventDateMustBeGreaterThanPurchaseEndDate();
 error EventCreator__YouDontOwnThisEvent();
 
-contract EventCreator is Ownable {
+contract EventCreator is PermissionsEnumerable, Ownable {
     struct EventInfo {
         string eventName;
         address eventOwner;
@@ -44,7 +44,7 @@ contract EventCreator is Ownable {
     constructor(address priceFeedAddress, address service) {
         s_priceFeedAddress = priceFeedAddress;
         s_service = service;
-
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     function createEvent(
@@ -115,17 +115,26 @@ contract EventCreator is Ownable {
         return s_service;
     }
 
-    function setEventId(uint256 eventId) public onlyOwner{
+    function setEventId(uint256 eventId) public onlyOwner {
         s_eventId = eventId;
     }
 
-    function setPriceFeedAddress(address priceFeedAddress) public onlyOwner{
+    function setPriceFeedAddress(address priceFeedAddress) public onlyOwner {
         s_priceFeedAddress = priceFeedAddress;
     }
 
-    function setService(address service) public onlyOwner{
+    function setService(address service) public onlyOwner {
         s_service = service;
     }
 
-    function _canSetOwner() internal view virtual override returns (bool) {}
+    function _canSetOwner()
+        internal
+        view
+        virtual
+        override
+        onlyRole(DEFAULT_ADMIN_ROLE)
+        returns (bool)
+    {
+        return true;
+    }
 }
