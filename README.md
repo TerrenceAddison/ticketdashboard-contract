@@ -1,6 +1,6 @@
 ## Introduction
 
-This project consists of 2 repositories, 1 for the frontend and the other is for the backend. This repository contains the contract side of the project. For frontend side you can check it [here](https://github.com/TerrenceAddison/ticketdashboard-ui).
+This project consists of 2 repositories, 1 for the frontend and the other is for the backend. This repository contains the contract side of the project. *Application* contains the frontend, *contract* contains the backend.
 
 Our project is an app for buying, trading(coming soon), selling(coming soon) tickets to any events one may host. The tickets are sold in the form of NFTs which can be any type you want totally customizable(coming soon) as per buyers choice. Users can host their events, participate in an event or just trade cool NFTs which were once an entry ticket to "Taylor's Swift Reputation tour". Build your collection, engage in a new way to sell and attract your audience using the power of web3.
 
@@ -19,6 +19,18 @@ This project is using Thirdweb's track 1 and polygon.
 
 
 ## Links
+
+[how it works](https://drive.google.com/drive/folders/1AcNlFT7khRxtTL7CpCGQMRcgmR-iqm87?usp=sharing)
+
+Third WEB Release
+https://thirdweb.com/0xF5b1CE392A112efB926d4926E09Ed81533bA805d/EventCreator
+
+Third web Dashboard link
+https://thirdweb.com/mumbai/0x45E11833C055AFe27830fc3F42C19100E23ad55a/
+
+Contract address
+0x45E11833C055AFe27830fc3F42C19100E23ad55a
+this contract will deploy the other event contracts which has been demonstrated in the videos.
 
 ## Description
 
@@ -74,12 +86,4 @@ npm run dev
 to run it
 
 
-Third WEB Release
-https://thirdweb.com/0xF5b1CE392A112efB926d4926E09Ed81533bA805d/EventCreator
 
-Third web Dashboard link
-https://thirdweb.com/mumbai/0x45E11833C055AFe27830fc3F42C19100E23ad55a/
-
-Contract address
-0x45E11833C055AFe27830fc3F42C19100E23ad55a
-this contract will deploy the other event contracts which has been demonstrated in the videos.
